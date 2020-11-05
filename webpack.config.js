@@ -41,7 +41,7 @@ const developmentConfig = {
 }
 
 module.exports = (env, options) => {
-  switch(options.mode) {
+  switch (options.mode) {
     case 'development':
       return merge(commonConfig, developmentConfig)
     case 'production':
