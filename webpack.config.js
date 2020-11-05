@@ -8,7 +8,8 @@ const commonConfig = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle-[hash:8].js'
+    filename: 'bundle-[hash:8].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
@@ -36,7 +37,8 @@ const productionConfig = {}
 const developmentConfig = {
   devtool: 'source-map',
   devServer: {
-    port: 8000
+    port: 8000,
+    historyApiFallback: true
   }
 }
 
