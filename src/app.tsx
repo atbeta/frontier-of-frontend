@@ -6,16 +6,22 @@ const client = new ApolloClient({
   uri: 'http://212.129.144.48:1337/graphql',
   cache: new InMemoryCache()
 })
+import { ThemeProvider } from 'theme-ui'
+import { theme } from './theme'
 
-const App = () => {
+const App = (props: any) => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
+        <ThemeProvider theme={theme}>
+          <Switch>
+            {routes.map((route, i) => (
+              <RouteWithSubRoutes key={i} {...route}>
+                {props.children}
+              </RouteWithSubRoutes>
+            ))}
+          </Switch>
+        </ThemeProvider>
       </Router>
     </ApolloProvider>
   )

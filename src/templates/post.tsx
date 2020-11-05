@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import ReactMarkdown from 'react-markdown'
+import { Container } from 'theme-ui'
 
 const query = gql`
   query GetPost($url: String!) {
@@ -44,7 +45,9 @@ const Post = (props) => {
   return (
     <div>
       <div>{title}</div>
-      <ReactMarkdown source={content} renderers={{ image: Image }} />
+      <Container variant="center">
+        <ReactMarkdown source={content} renderers={{ image: Image }} />
+      </Container>
     </div>
   )
   // const post = data.posts[0]
