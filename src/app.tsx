@@ -1,16 +1,23 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import { routes } from './routes'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+const client = new ApolloClient({
+  uri: 'http://212.129.144.48:1337/graphql',
+  cache: new InMemoryCache()
+})
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </ApolloProvider>
   )
 }
 
