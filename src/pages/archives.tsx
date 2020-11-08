@@ -5,9 +5,9 @@ import { useThemeUI } from 'theme-ui'
 import { Container } from 'theme-ui'
 import PostCard from '../components/post-card'
 
-const query = gql`
-  query GetPosts($sort: String!, $start: Int!, $limit: Int!) {
-    posts(sort: $sort, start: $start, limit: $limit) {
+const archivesQuery = gql`
+  query GetPosts($sort: String!) {
+    posts(sort: $sort) {
       title
       cover {
         url
@@ -23,13 +23,11 @@ const query = gql`
   }
 `
 
-const Home = () => {
+const Archives = () => {
   const context = useThemeUI()
-  const { data, loading, error } = useQuery(query, {
+  const { data, loading, error } = useQuery(archivesQuery, {
     variables: {
-      sort: 'id:desc',
-      start: 0,
-      limit: 5
+      sort: 'id:desc'
     }
   })
   if (loading) {
@@ -40,12 +38,11 @@ const Home = () => {
     <div>
       <Container variant="center">
         {posts.map((post) => (
-          // <div key={post.id}>{post.title}</div>
-          <PostCard key={post.id} {...post} />
+          <div key={post.id}>{post.title}</div>
         ))}
       </Container>
     </div>
   )
 }
 
-export default Home
+export default Archives
