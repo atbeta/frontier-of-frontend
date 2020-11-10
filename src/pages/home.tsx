@@ -3,6 +3,7 @@ import { useRouteMatch } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import { useThemeUI } from 'theme-ui'
 import { Container } from 'theme-ui'
+import Header from '../components/header'
 import PostCard from '../components/post-card'
 
 const query = gql`
@@ -38,6 +39,7 @@ const Home = () => {
   const { posts } = data
   return (
     <div>
+      <Header />
       <Container variant="center">
         {posts.map((post) => (
           // <div key={post.id}>{post.title}</div>

@@ -23,7 +23,9 @@ export const theme: Theme = {
     background: '#fff',
     primary: '#07c',
     secondary: '#30c',
-    muted: '#f6f6f6'
+    muted: '#f6f6f6',
+    gray: '#555',
+    blue: '#667eea'
   },
   text: {
     heading: {
@@ -52,7 +54,7 @@ export const theme: Theme = {
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
-      fontWeight: 'body'
+      fontWeight: 'body',
     },
     h1: {
       variant: 'text.heading',
